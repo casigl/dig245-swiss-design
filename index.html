@@ -1,3 +1,8 @@
+<!-- This file re-creates a funky SwissTed poster for the band "The Velvet Underground".
+Author: Caroline Sigl
+Date: September 28, 2021
+Time spent: 5 hours -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,28 +13,163 @@
 <title>DIG 245 Swiss Design</title>
 
 <!-- CSS -->
+
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@600&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/styles.css">
+<style>
+  body{font-family: 'Source Sans Pro', sans-serif;}
+  .container-fluid{background-color: #000111;}
+  .ltwhite{color: #D7D9DA;}
+  .blue{color: #52B9F0}
+
+  a, a:link, a:hover, a:focus, a:active, a:visited { color: #52B9F0; text-decoration: none; }
+
+  /* sizes: xs, s  */
+  h1 { font-size: 3rem; line-height: 3rem; padding-left: 20px;
+  padding-right: 20px; padding-top: 5px;}
+  h3 { font-size: 1rem; padding-top: 20px;}
+  .right_text{
+    padding-right: 20px;
+  }
+  .left_text{
+    padding-left: 20px;
+  }
+
+  /* sizes: m */
+  @media (min-width: 768px) {
+    h1 { font-size: 5rem; line-height: 5rem; padding-left: 30px;
+    padding-right: 30px;}
+    h3 { font-size: 1.25rem; padding-top: 30px;}
+    .right_text{
+      padding-right: 30px;
+    }
+    .left_text{
+      padding-left: 30px;
+    }
+  }
+  /* sizes: l, xl */
+  @media (min-width: 1240px) {
+    h1 { font-size: 8rem; line-height: 8rem; padding-left: 40px;
+    padding-right: 40px;}
+    h3 { font-size: 1.5rem; padding-top: 40px;}
+    .right_text{
+      padding-right: 40px;
+    }
+    .left_text{
+      padding-left: 40px;
+    }
+  }
+
+</style>
+
+
 </head>
 <body>
 
-    <h1>DIG 245 Swiss Design</h1>
-
-    <div class="container">
-        A centered, container for breakpoints
-    </div>
     <div class="container-fluid">
-        A centered, full-width container for breakpoints
+      <!-- Dividing the top row into thirds for small text at top of poster. -->
+      <div class="row">
+        <div class= "col-4">
+          <h3 class = "ltwhite left_text">friday, january 9 1970<br class="d-none d-md-block">8:00 pm / $3.00<br class="d-none d-md-block"> the woodrose presents</h3>
+        </div>
+        <div class= "col-4">
+          <h3 class = "ltwhite left_text">at the paramount theater <br class="d-none d-md-block">1700 main street <br class="d-none d-md-block">springfield, massachusetts</h3>
+        </div>
+        <div class= "col-4">
+          <h3 class = "ltwhite right_text" style ="text-align: right">with special guests fat<br class="d-none d-md-block"> and barry t & the studebakers <br class="d-none d-md-block">an auntie gravity production</h3>
+        </div>
+      </div>
+
+      <!-- Letting the title of the poster take up the full 12 columns of the next row. -->
+      <div class="row">
+        <div class= "col-12">
+          <h1 class = "blue"><a href="https://www.swissted.com/products/the-velvet-underground-at-the-paramount-theatre-1970" target="_blank">the <br>velvet underground</a></h1>
+        </div>
+      </div>
+
+      <!-- Rectangular svg in next row better suited for large viewports. -->
+      <div class="row" id = "graphic">
+        <div class= "col-12 px-0 pt-3">
+          <svg viewBox="0 0 1140 660" xmlns="http://www.w3.org/2000/svg" class= "img-fluid">
+            <rect width="1140" height="660" fill="#000111"/>
+            <rect x="752" width="388" height="660" fill="#DFE2D8"/>
+            <rect y="660" width="150" height="752" transform="rotate(-90 0 660)" fill="#54BDED"/>
+            <rect x="308" y="150" width="150" height="565" transform="rotate(-90 308 150)" fill="#DFE2D8"/>
+            <rect width="388" height="660" fill="#54BDED"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Alternative smaller square svg better suited for small viewports like phones. -->
+      <!-- Setting to no display initially and through the event listerner script toggling between these 2 svgs based on viewport size. -->
+      <div class="row" style="display:none;" id = "smaller_graphic">
+        <div class= "col-12 px-0 pt-3">
+          <svg viewBox="0 0 768 660" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="768" height="660" fill="#000111"/>
+            <rect x="566" width="202" height="660" fill="#DFE2D8"/>
+            <rect y="660" width="150" height="566" transform="rotate(-90 0 660)" fill="#54BDED"/>
+            <rect x="122" y="150" width="150" height="565" transform="rotate(-90 122 150)" fill="#DFE2D8"/>
+            <rect width="202" height="660" fill="#54BDED"/>
+          </svg>
+        </div>
+      </div>
     </div>
-
-
-
-
 
 
 <!-- javascript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 <script src="assets/js/main.js"></script>
+
+<script>
+// In this script I have made an event listener that updates the svg from a rectagular one more suited to large desktops to a square one for more narrow viewports.
+
+  // Create a condition that targets viewports at most 992px wide
+  var mediaQuery = window.matchMedia('(max-width: 992px)');
+ 
+  function handleTabletChange(e) {
+    // Check if the media query is true
+    if (e.matches) {
+      // Then log the following message to the console
+      console.log('Media Query Matched!');
+      square_SVG();
+    }
+    else{
+      rectangle_SVG();
+    }
+  }
+ 
+  // Register event listener
+  mediaQuery.addListener(handleTabletChange);
+
+  // Initial check
+  handleTabletChange(mediaQuery);
+
+  function square_SVG(){
+    document.getElementById('graphic').style.display = 'none';
+    document.getElementById('smaller_graphic').style.display = 'block';
+  }
+  function rectangle_SVG(){
+    document.getElementById('graphic').style.display = 'block';
+    document.getElementById('smaller_graphic').style.display = 'none';
+  }
+
+</script>
+
+
+<script>
+//Printing out credits
+console.log(`
+
+*** Credits ***
+
+Original design: Mike Joyce, Stereotype Design
+Website layout: Caroline Sigl
+
+            `);
+</script>
 </body>
 </html>
